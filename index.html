@@ -228,36 +228,47 @@
           Have a vision for a custom artwork, album cover, editorial feature, or gallery piece? Reach out directly to discuss themes, dimensions, and availability.
         </p>
 
+        <div>
+          <span class="configured-email-pill" title="Inquiries route to this configured artist email">
+            <i data-lucide="mail-check" style="width: 14px; height: 14px;"></i>
+            <span>Routed to: </span>
+            <strong id="commission-routed-email">aria.thorne.art@atelier.dev</strong>
+          </span>
+        </div>
+
         <form id="commission-form" style="max-width: 600px; margin: 0 auto; text-align: left;">
           <div class="form-grid-2">
             <div class="form-group">
-              <label class="form-label">Your Name</label>
-              <input type="text" class="form-input" placeholder="e.g. Julian Croft" required />
+              <label class="form-label" for="comm-sender-name">Your Name</label>
+              <input type="text" id="comm-sender-name" name="name" class="form-input" placeholder="e.g. Julian Croft" required />
             </div>
             <div class="form-group">
-              <label class="form-label">Email Address</label>
-              <input type="email" class="form-input" placeholder="julian@example.com" required />
+              <label class="form-label" for="comm-sender-email">Your Email Address</label>
+              <input type="email" id="comm-sender-email" name="email" class="form-input" placeholder="julian@example.com" required />
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Project Type</label>
-            <select class="form-select">
-              <option>Private Collector Commission</option>
-              <option>Album / Cover Art</option>
-              <option>Commercial / Concept Design</option>
-              <option>Gallery Exhibition Inquiry</option>
+            <label class="form-label" for="comm-project-type">Project Type</label>
+            <select id="comm-project-type" name="type" class="form-select">
+              <option value="Private Collector Commission">Private Collector Commission</option>
+              <option value="Album / Cover Art">Album / Cover Art</option>
+              <option value="Commercial / Concept Design">Commercial / Concept Design</option>
+              <option value="Gallery Exhibition Inquiry">Gallery Exhibition Inquiry</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Project Vision & Timeline</label>
-            <textarea class="form-textarea" placeholder="Describe your concept, desired color tone, and deadlines..." rows="3" required></textarea>
+            <label class="form-label" for="comm-project-message">Project Vision & Timeline</label>
+            <textarea id="comm-project-message" name="message" class="form-textarea" placeholder="Describe your concept, desired color tone, dimensions, and deadlines..." rows="3" required></textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">
+          <button type="submit" id="comm-submit-btn" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">
             <i data-lucide="send" style="width: 18px; height: 18px;"></i> Send Commission Request
           </button>
+
+          <!-- Dynamic Status Notification Box -->
+          <div id="comm-status-box" class="commission-status-box"></div>
         </form>
 
         <div class="social-links-row">
