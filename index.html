@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contemporary Art Portfolio & Atelier</title>
+  
+  <!-- Google Fonts: Syne, Outfit, Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Living Canvas Animator Background -->
+  <canvas id="ambient-canvas"></canvas>
+  <div id="cursor-glow"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#hero" class="brand-wrapper">
+        <img id="nav-artist-avatar" src="img/front1.jpeg" alt="Artist Profile" class="brand-avatar" />
+        <div>
+          <span id="nav-artist-name" class="brand-title">Aria Thorne</span>
+          <span id="nav-artist-role" class="brand-role">Surrealist Concept Artist</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#portfolio" class="active">Portfolio</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#inquire">Commission</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Quick Theme Selector -->
+        <select id="mini-theme-select" class="theme-selector-mini" title="Switch Theme">
+          <option value="neon-noir">★ Neon Velvet (Pink & Purple)</option>
+          <option value="cyber-magenta">Cyberpunk Aurora</option>
+          <option value="amethyst-gold">Amethyst & Gold</option>
+          <option value="sakura-noir">Sakura Noir</option>
+          <option value="minimal-noir">Gallery Minimalist</option>
+        </select>
+
+        <a href="#inquire" class="btn btn-primary" style="padding: 0.6rem 1.4rem; font-size: 0.88rem;">
+          <i data-lucide="sparkles" style="width: 16px; height: 16px;"></i> Inquire
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div id="hero-status-badge" class="hero-badge">
+          <span class="pulse-dot"></span> Available for Q4 Commissions
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-title-line">Ethereal Visions.</span>
+          <span class="hero-title-line text-gradient" id="hero-artist-name">Aria Thorne</span>
+        </h1>
+
+        <p id="hero-tagline" class="hero-tagline">
+          Bridging celestial dreams, neon poetry, and digital mythologies.
+        </p>
+
+        <p id="hero-bio" class="hero-description">
+          Exploring the boundaries of imagination, cybernetic consciousness, and neon dreamscapes. Crafting evocative visual narratives through digital brushwork and surreal portraiture.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#portfolio" class="btn btn-primary">
+            <i data-lucide="layers" style="width: 18px; height: 18px;"></i> Explore Catalog
+          </a>
+          <a href="#about" class="btn btn-outline">
+            <i data-lucide="user" style="width: 18px; height: 18px;"></i> Artist Journey
+          </a>
+        </div>
+
+        <!-- Statistics Reel -->
+        <div class="hero-stats-row">
+          <div class="stat-box">
+            <div class="stat-number-wrap">
+              <span id="stat-years-exp" class="stat-number" data-target="8">8</span>
+              <span class="stat-plus">+</span>
+            </div>
+            <span class="stat-label">Years Active</span>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-number-wrap">
+              <span id="stat-artworks" class="stat-number" data-target="140">140</span>
+              <span class="stat-plus">+</span>
+            </div>
+            <span class="stat-label">Artworks</span>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-number-wrap">
+              <span id="stat-exhibitions" class="stat-number" data-target="18">18</span>
+              <span class="stat-plus"></span>
+            </div>
+            <span class="stat-label">Exhibitions</span>
+          </div>
+
+          <div class="stat-box">
+            <div class="stat-number-wrap">
+              <span id="stat-awards" class="stat-number" data-target="7">7</span>
+              <span class="stat-plus"></span>
+            </div>
+            <span class="stat-label">Awards</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Hero Art Showcase Card -->
+      <div class="hero-art-showcase">
+        <div class="hero-card-stack tilt-effect">
+          <div class="card-glare"></div>
+          <span class="floating-pill">Masterpiece Opus</span>
+          <img id="hero-cover-img" src="img/front2.jpeg" alt="Hero Art Showcase" class="hero-art-main" />
+          <div class="hero-art-badge-floating">
+            <div>
+              <h4 id="hero-featured-title">Violet Resonance</h4>
+              <span>Archival Fine Edition</span>
+            </div>
+            <a href="#portfolio" class="btn btn-outline btn-icon" title="View Full Works">
+              <i data-lucide="arrow-up-right" style="width: 18px; height: 18px;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Portfolio Showcase Section -->
+  <section id="portfolio" class="gallery-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Exhibition Hall</span>
+        <h2 class="section-title">Selected <span class="text-gradient">Artworks</span></h2>
+        <p class="section-subtext">
+          A curated collection spanning surreal portraiture, conceptual worldbuilding, and abstract digital paintings.
+        </p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Opuses</button>
+        <button class="filter-btn" data-filter="surrealism">Surrealism</button>
+        <button class="filter-btn" data-filter="portraits">Portraits</button>
+        <button class="filter-btn" data-filter="concept-art">Concept Art</button>
+        <button class="filter-btn" data-filter="digital-canvas">Digital Canvas</button>
+        <button class="filter-btn" data-filter="abstract">Abstract</button>
+      </div>
+
+      <!-- Artwork Grid -->
+      <div id="artwork-grid" class="art-grid">
+        <!-- Rendered dynamically by js/app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Artist Profile Section -->
+  <section id="about" class="about-section">
+    <div class="container about-grid">
+      <div class="about-image-wrap">
+        <img id="about-portrait-img" src="img/front1.jpeg" alt="Artist Portrait" class="about-portrait" />
+        <div class="about-experience-badge">
+          <div id="about-exp-years" class="about-exp-num">8+</div>
+          <div class="about-exp-text">Years Mastery</div>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <span class="section-tag">Artist Narrative</span>
+        <h3 id="about-name">Aria Thorne</h3>
+        <p id="about-full-bio" class="about-bio">
+          Aria Thorne is an internationally exhibited digital painter and concept designer specializing in ethereal portraiture, luminous surrealism, and atmospheric science-fiction landscapes. Her signature style fuses traditional Renaissance chiaroscuro with pulsing cyberpunk neon palettes, exploring vulnerability, identity, and cosmic transcendence.
+        </p>
+
+        <div class="about-details-list">
+          <div class="about-detail-item">
+            <span class="about-detail-label">Studio Location</span>
+            <span id="about-location" class="about-detail-val">Tokyo & Neo-San Francisco</span>
+          </div>
+          <div class="about-detail-item">
+            <span class="about-detail-label">Direct Contact</span>
+            <span id="about-email" class="about-detail-val">aria.thorne.art@atelier.dev</span>
+          </div>
+          <div class="about-detail-item">
+            <span class="about-detail-label">Mediums</span>
+            <span class="about-detail-val">Digital Oils, Shader Canvas, Mixed Media</span>
+          </div>
+          <div class="about-detail-item">
+            <span class="about-detail-label">Exhibition Rights</span>
+            <span class="about-detail-val">Museum & Private Archival</span>
+          </div>
+        </div>
+
+        <a href="#inquire" class="btn btn-primary">
+          <i data-lucide="mail" style="width: 18px; height: 18px;"></i> Request Commission
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commission & Inquire Section -->
+  <section id="inquire" class="commission-section">
+    <div class="container">
+      <div class="commission-card">
+        <span class="section-tag">Direct Atelier Inquiries</span>
+        <h2>Commission an <span class="text-gradient">Original Piece</span></h2>
+        <p>
+          Have a vision for a custom artwork, album cover, editorial feature, or gallery piece? Reach out directly to discuss themes, dimensions, and availability.
+        </p>
+
+        <form id="commission-form" style="max-width: 600px; margin: 0 auto; text-align: left;">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-input" placeholder="e.g. Julian Croft" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" placeholder="julian@example.com" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Project Type</label>
+            <select class="form-select">
+              <option>Private Collector Commission</option>
+              <option>Album / Cover Art</option>
+              <option>Commercial / Concept Design</option>
+              <option>Gallery Exhibition Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Project Vision & Timeline</label>
+            <textarea class="form-textarea" placeholder="Describe your concept, desired color tone, and deadlines..." rows="3" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 1rem;">
+            <i data-lucide="send" style="width: 18px; height: 18px;"></i> Send Commission Request
+          </button>
+        </form>
+
+        <div class="social-links-row">
+          <a href="https://instagram.com" target="_blank" class="social-icon-btn" title="Instagram">
+            <i data-lucide="instagram" style="width: 20px; height: 20px;"></i>
+          </a>
+          <a href="https://artstation.com" target="_blank" class="social-icon-btn" title="ArtStation">
+            <i data-lucide="palette" style="width: 20px; height: 20px;"></i>
+          </a>
+          <a href="https://x.com" target="_blank" class="social-icon-btn" title="Twitter / X">
+            <i data-lucide="twitter" style="width: 20px; height: 20px;"></i>
+          </a>
+          <a id="contact-artist-email" href="mailto:aria.thorne.art@atelier.dev" class="social-icon-btn" title="Email">
+            <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p id="footer-copyright">© 2026 Aria Thorne. All visual works protected by copyright.</p>
+
+      <!-- Hidden Authentication Access Trigger -->
+      <button id="secret-admin-trigger" class="footer-lock-trigger" onclick="artApp.triggerHiddenAuth()" title="Artist Control Panel Access">
+        <i data-lucide="lock" style="width: 14px; height: 14px;"></i>
+        <span>Artist Portal</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-container">
+      <button class="lightbox-close-btn" onclick="artApp.closeLightbox()" title="Close Lightbox">
+        <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+      </button>
+
+      <button class="lightbox-nav-btn lightbox-prev" onclick="artApp.navigateLightbox(-1)" title="Previous Artwork">
+        <i data-lucide="chevron-left" style="width: 24px; height: 24px;"></i>
+      </button>
+
+      <button class="lightbox-nav-btn lightbox-next" onclick="artApp.navigateLightbox(1)" title="Next Artwork">
+        <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+      </button>
+
+      <div class="lightbox-media">
+        <img id="lightbox-img" src="" alt="Artwork Preview" class="lightbox-image" />
+      </div>
+
+      <div class="lightbox-details">
+        <div style="margin-bottom: 1.5rem;">
+          <span id="lightbox-category" class="art-category">Surrealism</span>
+          <h2 id="lightbox-title" style="font-family: var(--font-heading); font-size: 2rem; margin-top: 0.4rem; color: var(--text-primary);">Violet Resonance</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle);">
+          <div>
+            <span class="about-detail-label">Year</span>
+            <div id="lightbox-year" style="font-weight: 600;">2026</div>
+          </div>
+          <div>
+            <span class="about-detail-label">Dimensions</span>
+            <div id="lightbox-dimensions" style="font-weight: 600;">4000 × 5000 px</div>
+          </div>
+          <div style="grid-column: span 2;">
+            <span class="about-detail-label">Medium</span>
+            <div id="lightbox-medium" style="font-weight: 600;">Digital Oils & Neon Glaze</div>
+          </div>
+        </div>
+
+        <div style="flex-grow: 1; margin-bottom: 2rem;">
+          <span class="about-detail-label">Curator Notes & Narrative</span>
+          <p id="lightbox-desc" style="color: var(--text-secondary); line-height: 1.7; margin-top: 0.5rem; font-size: 0.95rem;">
+            An exploration of human consciousness merging into hyper-dimensional frequency fields.
+          </p>
+        </div>
+
+        <a href="#inquire" class="btn btn-primary" onclick="artApp.closeLightbox()" style="width: 100%; justify-content: center;">
+          <i data-lucide="sparkles" style="width: 18px; height: 18px;"></i> Inquire About Acquisition
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden Authentication Form Modal (Triggered by URL #admin, ?admin=true, Ctrl+Shift+A, or footer lock) -->
+  <div id="auth-modal" class="auth-modal">
+    <div class="auth-dialog">
+      <button id="close-auth-modal-btn" class="lightbox-close-btn" title="Close Login">
+        <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+      </button>
+
+      <div class="auth-header">
+        <div class="auth-icon-badge">
+          <i data-lucide="shield-check" style="width: 32px; height: 32px;"></i>
+        </div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-primary);">Artist Atelier Login</h3>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 0.4rem;">
+          Authenticate to customize profile identity, profile photo, themes, and portfolio artworks.
+        </p>
+      </div>
+
+      <form id="admin-login-form">
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="auth-username">Artist Handle / Username</label>
+          <input type="text" id="auth-username" class="auth-input" placeholder="artist or admin" required autocomplete="username" />
+        </div>
+
+        <div class="auth-form-group">
+          <label class="auth-form-label" for="auth-password">Security Password</label>
+          <input type="password" id="auth-password" class="auth-input" placeholder="••••••••••••" required autocomplete="current-password" />
+        </div>
+
+        <div id="auth-error-msg" style="color: #f43f5e; font-size: 0.85rem; margin-bottom: 1rem; display: none; text-align: center;"></div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 0.95rem;">
+          <i data-lucide="unlock" style="width: 18px; height: 18px;"></i> Access Control Panel
+        </button>
+
+        <div class="auth-cred-hint">
+          <strong>Default Credentials:</strong><br />
+          Username: <code style="color: var(--primary);">artist</code> &bull; Password: <code style="color: var(--secondary);">artpass2026</code>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Artist Control Panel Drawer / Overlay -->
+  <div id="admin-drawer" class="admin-drawer">
+    <div class="admin-panel-layout">
+      <!-- Admin Sidebar -->
+      <aside class="admin-sidebar">
+        <div class="admin-brand">
+          <div class="auth-icon-badge" style="width: 40px; height: 40px; margin: 0;">
+            <i data-lucide="sliders" style="width: 20px; height: 20px;"></i>
+          </div>
+          <div>
+            <h3 style="font-size: 1.05rem;">Atelier Studio</h3>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">Artist Control Panel</span>
+          </div>
+        </div>
+
+        <ul class="admin-nav-tabs">
+          <li class="admin-nav-tab active" data-tab="profile">
+            <i data-lucide="user" style="width: 18px; height: 18px;"></i>
+            <span>Artist Identity</span>
+          </li>
+          <li class="admin-nav-tab" data-tab="visuals">
+            <i data-lucide="image" style="width: 18px; height: 18px;"></i>
+            <span>Photos & Avatar</span>
+          </li>
+          <li class="admin-nav-tab" data-tab="themes">
+            <i data-lucide="palette" style="width: 18px; height: 18px;"></i>
+            <span>Theme Variety</span>
+          </li>
+          <li class="admin-nav-tab" data-tab="artworks">
+            <i data-lucide="grid" style="width: 18px; height: 18px;"></i>
+            <span>Manage Artworks</span>
+          </li>
+          <li class="admin-nav-tab" data-tab="presets">
+            <i data-lucide="users" style="width: 18px; height: 18px;"></i>
+            <span>Artists & Backup</span>
+          </li>
+        </ul>
+
+        <div class="admin-sidebar-footer">
+          <button id="close-admin-panel-btn" class="btn btn-outline" style="width: 100%; font-size: 0.85rem; padding: 0.65rem;">
+            <i data-lucide="eye" style="width: 16px; height: 16px;"></i> View Live Site
+          </button>
+          <button id="admin-logout-btn" class="btn btn-outline" style="width: 100%; font-size: 0.85rem; padding: 0.65rem; color: #f43f5e; border-color: rgba(244, 63, 94, 0.3);">
+            <i data-lucide="log-out" style="width: 16px; height: 16px;"></i> Sign Out
+          </button>
+        </div>
+      </aside>
+
+      <!-- Admin Main View -->
+      <main class="admin-main-view">
+        <header class="admin-topbar">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <h2 style="font-family: var(--font-heading); font-size: 1.3rem;">Artist Management Console</h2>
+            <span class="pulse-dot" title="Live Synced"></span>
+          </div>
+
+          <div class="admin-topbar-actions">
+            <button id="save-profile-btn" class="btn btn-primary" style="padding: 0.65rem 1.6rem;">
+              <i data-lucide="save" style="width: 16px; height: 16px;"></i> Save Changes
+            </button>
+          </div>
+        </header>
+
+        <div class="admin-scroll-body">
+          <!-- Multi-Artist Quick Switcher Banner -->
+          <div class="preset-artist-banner">
+            <div>
+              <h4 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--text-primary);">
+                Multi-Artist Profile Switcher
+              </h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
+                Select from predefined artists or customize your own name and portfolio.
+              </p>
+            </div>
+            <div class="preset-switcher-group">
+              <select id="artist-preset-select" class="preset-select">
+                <option value="artist-aria">Aria Thorne (Surrealist Concept)</option>
+                <option value="artist-marcus">Marcus Kaelen (Cinematic Illustrator)</option>
+                <option value="artist-elena">Elena Rostova (Haute Couture Fine Art)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- TAB 1: Profile Identity -->
+          <section id="pane-profile" class="admin-section-pane active">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 1.5rem;">Personalized Profile Details</h3>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="edit-artist-name">Artist Full Name</label>
+                <input type="text" id="edit-artist-name" class="form-input" placeholder="e.g. Aria Thorne" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-artist-title">Professional Title / Role</label>
+                <input type="text" id="edit-artist-title" class="form-input" placeholder="e.g. Contemporary Surrealist" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-artist-tagline">Header Tagline / Slogan</label>
+              <input type="text" id="edit-artist-tagline" class="form-input" placeholder="Short evocative phrase" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="edit-artist-bio">Full Biography & Artistic Statement</label>
+              <textarea id="edit-artist-bio" class="form-textarea" placeholder="Detail your artistic philosophy, influences, and background..."></textarea>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label" for="edit-artist-location">Base Location</label>
+                <input type="text" id="edit-artist-location" class="form-input" placeholder="City / Country" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-artist-email">Contact Email</label>
+                <input type="email" id="edit-artist-email" class="form-input" placeholder="artist@example.com" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-artist-phone">Direct Line</label>
+                <input type="text" id="edit-artist-phone" class="form-input" placeholder="+1 (555) 000-0000" />
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" for="edit-artist-status-badge">Commission Status Badge Text</label>
+                <input type="text" id="edit-artist-status-badge" class="form-input" placeholder="e.g. Available for Q4 Commissions" />
+              </div>
+              <div class="form-group" style="display: flex; align-items: flex-end; padding-bottom: 1.5rem;">
+                <label style="display: flex; align-items: center; gap: 0.6rem; cursor: pointer;">
+                  <input type="checkbox" id="edit-artist-status-active" />
+                  <span style="font-size: 0.9rem; font-weight: 500;">Display Live Commission Badge in Hero</span>
+                </label>
+              </div>
+            </div>
+
+            <h4 style="font-family: var(--font-heading); margin: 2rem 0 1rem; color: var(--text-primary);">
+              Career Milestones & Statistics
+            </h4>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label" for="edit-stat-exp">Years of Experience</label>
+                <input type="number" id="edit-stat-exp" class="form-input" min="0" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-stat-artworks">Artworks Created</label>
+                <input type="number" id="edit-stat-artworks" class="form-input" min="0" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-stat-exhibitions">Exhibitions Count</label>
+                <input type="number" id="edit-stat-exhibitions" class="form-input" min="0" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="edit-stat-awards">Awards & Honors</label>
+                <input type="number" id="edit-stat-awards" class="form-input" min="0" />
+              </div>
+            </div>
+          </section>
+
+          <!-- TAB 2: Visuals & Profile Photos -->
+          <section id="pane-visuals" class="admin-section-pane">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">Profile & Hero Images</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem;">
+              Choose directly from the 18 local high-resolution images in the <code style="color: var(--primary);">img/</code> folder, or upload your own custom photo.
+            </p>
+
+            <!-- Avatar Picker Section -->
+            <div style="margin-bottom: 3rem;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 1rem;">
+                1. Artist Profile Avatar Picture
+              </h4>
+              <div class="avatar-preview-box">
+                <img id="avatar-preview-img" src="img/front1.jpeg" alt="Selected Avatar" class="avatar-preview-circle" />
+                <div>
+                  <h5 style="color: var(--text-primary); margin-bottom: 0.25rem;">Active Profile Picture</h5>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                    Displayed in the navbar, about narrative, and portfolio badges.
+                  </p>
+                  <label class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem; cursor: pointer;">
+                    <i data-lucide="upload" style="width: 16px; height: 16px;"></i> Upload Custom Avatar
+                    <input type="file" id="avatar-file-upload" accept="image/*" style="display: none;" />
+                  </label>
+                </div>
+              </div>
+
+              <label class="form-label">Pick from Local Image Catalog (Click thumbnail to set):</label>
+              <div id="avatar-picker-grid" class="image-picker-grid"></div>
+            </div>
+
+            <!-- Hero Cover Section -->
+            <div>
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--text-primary); margin-bottom: 1rem;">
+                2. Hero Showcase Main Artwork
+              </h4>
+              <div class="avatar-preview-box">
+                <img id="cover-preview-img" src="img/front2.jpeg" alt="Selected Cover" style="width: 80px; height: 100px; object-fit: cover; border-radius: var(--radius-md); border: 2px solid var(--primary);" />
+                <div>
+                  <h5 style="color: var(--text-primary); margin-bottom: 0.25rem;">Active Hero Showcase Artwork</h5>
+                  <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                    Displayed in the 3D tilting centerpiece card on the home page.
+                  </p>
+                  <label class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem; cursor: pointer;">
+                    <i data-lucide="upload" style="width: 16px; height: 16px;"></i> Upload Custom Showcase Image
+                    <input type="file" id="cover-file-upload" accept="image/*" style="display: none;" />
+                  </label>
+                </div>
+              </div>
+
+              <label class="form-label">Pick from Local Image Catalog (Click thumbnail to set):</label>
+              <div id="cover-picker-grid" class="image-picker-grid"></div>
+            </div>
+          </section>
+
+          <!-- TAB 3: Theme Variety -->
+          <section id="pane-themes" class="admin-section-pane">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">Curated Theme Variety</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem;">
+              Choose from our intelligent color synergies or fine-tune custom hues to match your individual artistic style.
+            </p>
+
+            <div id="theme-cards-container" class="theme-cards-grid"></div>
+
+            <div style="background: var(--bg-medium); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem; margin-top: 2rem;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+                Custom Artist Palette Generator
+              </h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Set precise hex colors for your bespoke portfolio aesthetic:
+              </p>
+
+              <div class="form-grid-3">
+                <div class="form-group">
+                  <label class="form-label">Primary Neon / Pink Accent</label>
+                  <input type="color" id="custom-primary-color" value="#ff2a85" class="form-input" style="height: 48px; padding: 4px;" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Secondary / Purple Accent</label>
+                  <input type="color" id="custom-secondary-color" value="#9d4edd" class="form-input" style="height: 48px; padding: 4px;" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Background Pitch Black</label>
+                  <input type="color" id="custom-bg-color" value="#08040c" class="form-input" style="height: 48px; padding: 4px;" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="animator-style-select">Web Animator Particle Style</label>
+                <select id="animator-style-select" class="form-select">
+                  <option value="cosmic">Cosmic Nebulae & Star Dust (Default)</option>
+                  <option value="constellation">Constellation Neon Nodes</option>
+                  <option value="nebula">Pulsing Radiant Aurora</option>
+                  <option value="ambient">Minimal Floating Particles</option>
+                </select>
+              </div>
+
+              <button id="apply-custom-theme-btn" class="btn btn-primary" style="margin-top: 0.5rem;">
+                <i data-lucide="check" style="width: 16px; height: 16px;"></i> Apply Custom Color Theme
+              </button>
+            </div>
+          </section>
+
+          <!-- TAB 4: Manage Artworks -->
+          <section id="pane-artworks" class="admin-section-pane">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">Portfolio Opus Management</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem;">
+              Add new creations, toggle featured spotlights, or manage your existing showcase collection.
+            </p>
+
+            <!-- Add Artwork Form -->
+            <div style="background: var(--bg-medium); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 2.5rem;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1.25rem;">
+                <i data-lucide="plus-circle" style="width: 20px; height: 20px; color: var(--primary);"></i> Add New Artwork
+              </h4>
+
+              <form id="add-artwork-form">
+                <div class="form-grid-2">
+                  <div class="form-group">
+                    <label class="form-label">Artwork Title</label>
+                    <input type="text" id="new-art-title" class="form-input" placeholder="e.g. Celestial Mirage" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select id="new-art-category" class="form-select">
+                      <option value="Surrealism">Surrealism</option>
+                      <option value="Portraits">Portraits</option>
+                      <option value="Concept Art">Concept Art</option>
+                      <option value="Digital Canvas">Digital Canvas</option>
+                      <option value="Abstract">Abstract</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-grid-3">
+                  <div class="form-group">
+                    <label class="form-label">Creation Year</label>
+                    <input type="text" id="new-art-year" class="form-input" placeholder="2026" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Medium</label>
+                    <input type="text" id="new-art-medium" class="form-input" placeholder="e.g. Digital Oils & Neon Glaze" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Dimensions / Res</label>
+                    <input type="text" id="new-art-dimensions" class="form-input" placeholder="4000 × 5000 px" />
+                  </div>
+                </div>
+
+                <!-- Image Selector for Artwork -->
+                <div class="form-group">
+                  <label class="form-label">Select Artwork Image</label>
+                  <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 0.75rem;">
+                    <img id="new-art-preview-img" src="img/front1.jpeg" alt="New Art Preview" style="width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);" />
+                    <input type="text" id="new-art-img-path" class="form-input" value="img/front1.jpeg" placeholder="Image path or URL" />
+                    <label class="btn btn-outline" style="padding: 0.6rem 1rem; font-size: 0.85rem; white-space: nowrap; cursor: pointer;">
+                      <i data-lucide="upload" style="width: 14px; height: 14px;"></i> Upload
+                      <input type="file" id="new-art-file-upload" accept="image/*" style="display: none;" />
+                    </label>
+                  </div>
+                  <span style="font-size: 0.8rem; color: var(--text-muted);">Quick-select from local img directory:</span>
+                  <div id="new-art-picker-grid" class="image-picker-grid" style="max-height: 140px;"></div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Artwork Description / Curator Story</label>
+                  <textarea id="new-art-desc" class="form-textarea" placeholder="Describe the concept, symbolism, and techniques..." rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" id="new-art-featured" />
+                    <span style="font-size: 0.9rem;">Spotlight as Featured Piece</span>
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                  <i data-lucide="plus" style="width: 16px; height: 16px;"></i> Publish to Showcase
+                </button>
+              </form>
+            </div>
+
+            <!-- Artwork List -->
+            <h4 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1rem;">Existing Artworks</h4>
+            <div id="artwork-admin-list" class="artwork-admin-list"></div>
+          </section>
+
+          <!-- TAB 5: Presets & Backup -->
+          <section id="pane-presets" class="admin-section-pane">
+            <h3 style="font-family: var(--font-heading); font-size: 1.4rem; margin-bottom: 0.5rem;">Multi-Artist Profiles & Data Sync</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 2rem;">
+              Export full portfolio backups as JSON, transfer configurations between different artists, or reset to defaults.
+            </p>
+
+            <div class="form-grid-2">
+              <div style="background: var(--bg-medium); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
+                <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">
+                  <i data-lucide="download" style="width: 18px; height: 18px; color: var(--primary);"></i> Export Profile Backup
+                </h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                  Download a JSON file containing all customized artist information, statistics, themes, and artwork lists.
+                </p>
+                <button id="export-backup-btn" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                  Download Portfolio JSON
+                </button>
+              </div>
+
+              <div style="background: var(--bg-medium); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 2rem;">
+                <h4 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 0.5rem;">
+                  <i data-lucide="upload-cloud" style="width: 18px; height: 18px; color: var(--secondary);"></i> Import Profile Backup
+                </h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                  Load an existing artist profile JSON to instantly transform the website's identity and works.
+                </p>
+                <label class="btn btn-outline" style="width: 100%; justify-content: center; cursor: pointer;">
+                  Select JSON File
+                  <input type="file" id="import-backup-input" accept=".json" style="display: none;" />
+                </label>
+              </div>
+            </div>
+
+            <div style="margin-top: 2rem; background: rgba(244, 63, 94, 0.08); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: var(--radius-lg); padding: 2rem;">
+              <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #f43f5e; margin-bottom: 0.5rem;">
+                <i data-lucide="alert-triangle" style="width: 18px; height: 18px;"></i> Reset to Initial Defaults
+              </h4>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                Clear local storage and restore default Aria Thorne profile with Neon Velvet Pink/Purple theme.
+              </p>
+              <button id="reset-defaults-btn" class="btn btn-outline" style="color: #f43f5e; border-color: #f43f5e;">
+                Reset Factory Defaults
+              </button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/animator.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
